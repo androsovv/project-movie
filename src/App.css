@@ -29,10 +29,10 @@ nav {
     align-items: start;
     border: 1px solid grey;
     box-shadow: 5px 5px 5px grey;
-    width: fit-content;
-    height: 700px;
-
+    white-space: nowrap;
+    height: 100%;
 }
+
 
 .checkboxFilter {
     display: flex;
@@ -58,4 +58,35 @@ nav {
     width: 450px;
     border: 1px solid grey;
     box-shadow: 5px 5px 5px grey;
+    display: flex;
+}
+
+.poster {
+    width: 200px;
+    height: 300px;
+    align-content: start;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.top {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.middle {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.more__btn {
+    margin-top: 150px;
+    border: none;
+    background-color: white;
+    border-top: grey 1px solid;
 }

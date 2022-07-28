@@ -1,5 +1,6 @@
 import React from 'react';
 import Pagination from "./pagination";
+import geners from "../data/genre";
 
 const Filters = () => {
     return (
@@ -15,14 +16,9 @@ const Filters = () => {
                 <option>Сортировать по</option>
             </select>
             <div className="checkboxFilter">
-                    <p><input type="checkbox" value="боевик"/> боевик</p>
-                    <p><input type="checkbox" value="приключение"/> приключение</p>
-                    <p><input type="checkbox" value="мультфильм"/> мультфильм</p>
-                    <p><input type="checkbox" value="комедия"/> комедия</p>
-                    <p><input type="checkbox" value="криминал"/> криминал</p>
-                    <p><input type="checkbox" value="документальный"/> документальный</p>
-                    <p><input type="checkbox" value="драма"/> драма</p>
-
+                {geners.map(item =>
+                    <div className="filterName" key={item.id}><input type="checkbox" value={item.name}/>{" " + item.name}</div>
+                )}
             </div>
             <Pagination/>
         </div>
