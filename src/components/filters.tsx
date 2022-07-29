@@ -2,7 +2,7 @@ import React from 'react';
 import Pagination from "./pagination";
 import geners from "../data/genre";
 
-const Filters = () => {
+const Filters = ({currentPage, totalPages, handlePageChange}) => {
     return (
         <div className="filters">
             <h2 style={{fontWeight: 500}}>Фильтры:</h2>
@@ -20,7 +20,7 @@ const Filters = () => {
                     <div className="filterName" key={item.id}><input type="checkbox" value={item.name}/>{" " + item.name}</div>
                 )}
             </div>
-            <Pagination/>
+            <Pagination currentPage={currentPage} totalPages={totalPages} handlePageChange={handlePageChange} />
         </div>
     );
 };

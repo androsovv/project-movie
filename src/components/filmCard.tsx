@@ -1,9 +1,9 @@
 import React from 'react';
 import filmList from "../data/filmList"
 
-const FilmCard = () => {
+const FilmCard = ({filmCrop}) => {
     return (
-        filmList.map((item) => {
+        filmCrop.map((item) => {
             const imagePath = item.poster_path || item.backdrop_path;
             return (
                 <div key={item.id} className="film__card">

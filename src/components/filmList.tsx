@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import FilmCard from "./filmCard";
-import filmList from "../data/filmList";
 
 
-const FilmList = () => {
+
+const FilmList = ({filmCrop}) => {
 
     return (
         <div className="film__list">
-            <FilmCard/>
+            <FilmCard filmCrop={filmCrop}/>
         </div>
     );
 };

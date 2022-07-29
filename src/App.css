@@ -41,6 +41,11 @@ nav {
     align-items: start;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
 .film__list {
     align-items: center;
     margin-left: 30px;
