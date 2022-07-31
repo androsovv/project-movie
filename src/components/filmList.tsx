@@ -1,13 +1,16 @@
 import React, {useEffect} from 'react';
 import FilmCard from "./filmCard";
-import filmList from "../data/filmList";
+import {IFilmData} from "../types/filmTypes";
 
+interface IFilmList {
+    pagesCrop: IFilmData[];
+}
 
-const FilmList = () => {
+const FilmList = ({pagesCrop}: IFilmList) => {
 
     return (
         <div className="film__list">
-            <FilmCard/>
+            <FilmCard pagesCrop={pagesCrop}/>
         </div>
     );
 };

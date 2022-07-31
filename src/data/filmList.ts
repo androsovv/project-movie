@@ -1,4 +1,6 @@
-const filmList =
+import {IFilmData} from "../types/filmTypes";
+
+export const filmList: IFilmData[] =
     [
         {
             "adult": false,
@@ -414,5 +416,3 @@ const filmList =
             "vote_count": 8806
         }
     ];
-
-export default filmList;
