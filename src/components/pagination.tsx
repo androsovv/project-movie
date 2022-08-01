@@ -12,8 +12,12 @@ const Pagination:FC<PaginationProps> = ({handlePageChange, currentPage, totalPag
     return (
         <div>
             <div className="pagination">
-                <button className="btn btn-primary m-2" onClick={() => handlePageChange(-1)}>Назад</button>
-                <button className="btn btn-primary m-2" onClick={() => handlePageChange(1)}>Вперёд</button>
+                { currentPage > 1 &&
+                    <button className="btn btn-primary m-2" onClick={() => handlePageChange(-1)}>Назад</button>}
+                {
+                    currentPage !== totalPages &&
+                    <button className="btn btn-primary m-2" onClick={() => handlePageChange(1)}>Вперёд</button>
+                }
             </div>
             <div className="paginationNumbers">
                 <p>{currentPage + " of " + totalPages}</p>
