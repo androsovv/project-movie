@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {FC} from 'react';
 import Pagination from "./pagination";
 import geners from "../data/genre";
 
-const Filters = ({currentPage, totalPages, handlePageChange}) => {
+interface FilterProps {
+    handlePageChange: (index:number) => void;
+    totalPages: number;
+    currentPage: number;
+}
+
+const Filters:FC<FilterProps> = ({handlePageChange, totalPages, currentPage}) => {
     return (
         <div className="filters">
             <h2 style={{fontWeight: 500}}>Фильтры:</h2>
@@ -20,7 +26,7 @@ const Filters = ({currentPage, totalPages, handlePageChange}) => {
                     <div className="filterName" key={item.id}><input type="checkbox" value={item.name}/>{" " + item.name}</div>
                 )}
             </div>
-            <Pagination currentPage={currentPage} totalPages={totalPages} handlePageChange={handlePageChange} />
+            <Pagination handlePageChange={handlePageChange} totalPages={totalPages} currentPage={currentPage}/>
         </div>
     );
 };
