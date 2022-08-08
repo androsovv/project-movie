@@ -3,12 +3,10 @@ import Pagination from "./pagination";
 import geners from "../data/genre";
 
 interface FilterProps {
-    handlePageChange: (index:number) => void;
     totalPages: number;
-    currentPage: number;
 }
 
-const Filters:FC<FilterProps> = ({handlePageChange, totalPages, currentPage}) => {
+const Filters:FC<FilterProps> = ({totalPages}) => {
     return (
         <div className="filters">
             <h2 style={{fontWeight: 500}}>Фильтры:</h2>
@@ -26,7 +24,7 @@ const Filters:FC<FilterProps> = ({handlePageChange, totalPages, currentPage}) =>
                     <div className="filterName" key={item.id}><input type="checkbox" value={item.name}/>{" " + item.name}</div>
                 )}
             </div>
-            <Pagination handlePageChange={handlePageChange} totalPages={totalPages} currentPage={currentPage}/>
+            <Pagination  totalPages={totalPages}/>
         </div>
     );
 };

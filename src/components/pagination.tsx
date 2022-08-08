@@ -1,14 +1,22 @@
 import React, {FC} from 'react';
-
-
+import {useDispatch, useSelector} from "react-redux";
+import { iState} from "../types/filmTypes";
+import {setPage} from "../store/actions";
 
 interface PaginationProps {
-    handlePageChange: (index:number) => void;
     totalPages: number;
-    currentPage: number;
 }
 
-const Pagination:FC<PaginationProps> = ({handlePageChange, currentPage, totalPages}) => {
+const Pagination:FC<PaginationProps> = ({ totalPages}) => {
+    const dispatch = useDispatch();
+    const state = useSelector((state: iState) => state);
+    const {currentPage} = state;
+
+
+    const handlePageChange = (index: number) => {
+        dispatch(setPage(currentPage + index));
+    }
+
     return (
         <div>
             <div className="pagination">

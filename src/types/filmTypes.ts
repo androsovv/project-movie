@@ -14,3 +14,7 @@ export interface IFilmData {
     vote_average: number;
     vote_count: number;
 }
+
+export interface iState {
+    currentPage: number;
+}

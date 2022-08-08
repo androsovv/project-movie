@@ -6,21 +6,18 @@ import Filters from "./components/filters";
 import FilmList from "./components/filmList";
 import {filmList} from "./data/filmList";
 import {paginate} from "./utils/paginate";
-import {IFilmData} from "./types/filmTypes";
+import {IFilmData, iState} from "./types/filmTypes";
+import {useSelector} from "react-redux";
 
 
 function App() {
-    const [currentPage, setPage] = useState(1);
 
     const itemsOnPage = 10;
     const filmsAmount = filmList.length;
     const totalPages = Math.ceil(filmsAmount / itemsOnPage);
-
+    const state = useSelector((state: iState) => state);
+    const {currentPage} = state;
     const pagesCrop: IFilmData[] = paginate(filmList, currentPage, itemsOnPage);
-
-    const handlePageChange = (index: number)=> setPage(prevState => prevState + index)
-
-
 
 
 
@@ -28,7 +25,7 @@ function App() {
         <div className="App">
             <Header/>
             <div className="app__content">
-                <Filters handlePageChange={handlePageChange} currentPage={currentPage} totalPages={totalPages}/>
+                <Filters totalPages={totalPages}/>
                 <FilmList pagesCrop={pagesCrop}/>
             </div>
         </div>
