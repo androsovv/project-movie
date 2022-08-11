@@ -17,4 +17,5 @@ export interface IFilmData {
 
 export interface iState {
     currentPage: number;
+    sortBy: string;
 }
