@@ -10,7 +10,7 @@ import {
     SORT_BY_YEAR_2020,
     SORT_BY_YEAR_2019,
     SORT_BY_YEAR_2018,
-    SORT_BY_YEAR_2017, setPage
+    SORT_BY_YEAR_2017, setPage, setYear
 } from "../store/actions";
 import {useDispatch, useSelector} from "react-redux";
 import {iState} from "../types/filmTypes";
@@ -21,6 +21,7 @@ interface FilterProps {
 
 const Filters:FC<FilterProps> = ({totalPages}) => {
     const dispatch = useDispatch();
+
     const handleSort = (event: ChangeEvent<HTMLSelectElement>) => {
         dispatch(setSort(event.target.value));
         dispatch(setPage(1));
@@ -29,6 +30,13 @@ const Filters:FC<FilterProps> = ({totalPages}) => {
         dispatch(setSort(SORT_BY_FAME_DOWN));
         dispatch(setPage(1));
     }
+
+    const handleYear = (event: ChangeEvent<HTMLSelectElement>) => {
+        const year = Number(event.target.value);
+        dispatch(setYear(year))
+        dispatch(setPage(1));
+    }
+
     return (
         <div className="filters">
             <h2 style={{fontWeight: 500}}>Фильтры:</h2>
@@ -44,11 +52,11 @@ const Filters:FC<FilterProps> = ({totalPages}) => {
                 <option value={SORT_BY_RATE_UP}>Рейтинг по возрастанию</option>
             </select>
             <span>Год релиза:</span>
-            <select className="form-select form-select-mg mb-3" onChange={handleSort}>
-                <option value={SORT_BY_YEAR_2020}>2020</option>
-                <option value={SORT_BY_YEAR_2019}>2019</option>
-                <option value={SORT_BY_YEAR_2018}>2018</option>
-                <option value={SORT_BY_YEAR_2017}>2017</option>
+            <select className="form-select form-select-mg mb-3" onChange={handleYear}>
+                <option value={2020}>2020</option>
+                <option value={2019}>2019</option>
+                <option value={2018}>2018</option>
+                <option value={2017}>2017</option>
             </select>
             <div className="checkboxFilter">
                 {geners.map(item =>

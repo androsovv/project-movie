@@ -22,13 +22,10 @@ import {
 
 
 function App() {
-
-
     const state = useSelector((state: iState) => state);
-    const {currentPage, sortBy} = state;
+    const {currentPage, sortBy, sortYear} = state;
 
     let sortedFilms: IFilmData[] = _.orderBy(filmList, ['vote_average'], 'desc');
-
     if (sortBy === SORT_BY_RATE_DOWN) {
         sortedFilms = _.orderBy(filmList, ['vote_average'], 'desc');
     } else if (sortBy === SORT_BY_RATE_UP) {
@@ -37,23 +34,24 @@ function App() {
         sortedFilms = _.orderBy(filmList, ['popularity'], 'desc');
     } else if (sortBy === SORT_BY_FAME_UP) {
         sortedFilms = _.orderBy(filmList, ['popularity'], 'asc');
-    } else if (sortBy === SORT_BY_YEAR_2020) {
-        sortedFilms = filmList.filter(item =>
+    }
+
+    if (sortYear === SORT_BY_YEAR_2020) {
+        sortedFilms = sortedFilms.filter(item =>
             (((Number(item.release_date.slice(0, 4))) === 2020))
         )
-    } else if (sortBy === SORT_BY_YEAR_2019) {
-        sortedFilms = filmList.filter(item =>
+    } else if (sortYear === SORT_BY_YEAR_2019) {
+        sortedFilms = sortedFilms.filter(item =>
             (((Number(item.release_date.slice(0, 4))) === 2019))
         )
-    } else if (sortBy === SORT_BY_YEAR_2018) {
-        sortedFilms = filmList.filter(item =>
+    } else if (sortYear === SORT_BY_YEAR_2018) {
+        sortedFilms = sortedFilms.filter(item =>
             (((Number(item.release_date.slice(0, 4))) === 2018))
         )
-    } else if (sortBy === SORT_BY_YEAR_2017) {
-        sortedFilms = filmList.filter(item =>
+    } else if (sortYear === SORT_BY_YEAR_2017) {
+        sortedFilms = sortedFilms.filter(item =>
             (((Number(item.release_date.slice(0, 4))) === 2017))
-        )
-    }
+        )}
 
     const itemsOnPage = 10;
     const filmsAmount = sortedFilms.length;
