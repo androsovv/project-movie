@@ -5,54 +5,16 @@ import "bootstrap/dist/css/bootstrap.css"
 import Filters from "./components/filters";
 import FilmList from "./components/filmList";
 import {filmList} from "./data/filmList";
-import * as _ from "lodash";
 import {paginate} from "./utils/paginate";
 import {IFilmData, iState} from "./types/filmTypes";
 import {useSelector} from "react-redux";
-import {
-    SORT_BY_RATE_DOWN,
-    SORT_BY_RATE_UP,
-    SORT_BY_FAME_DOWN,
-    SORT_BY_FAME_UP,
-    SORT_BY_YEAR_2020,
-    SORT_BY_YEAR_2019,
-    SORT_BY_YEAR_2018,
-    SORT_BY_YEAR_2017,
-} from "./store/actions";
+import {sortByYear, sortMovies} from "./utils/filter";
 
 
 function App() {
     const state = useSelector((state: iState) => state);
     const {currentPage, sortBy, sortYear} = state;
-
-    let sortedFilms: IFilmData[] = _.orderBy(filmList, ['vote_average'], 'desc');
-    if (sortBy === SORT_BY_RATE_DOWN) {
-        sortedFilms = _.orderBy(filmList, ['vote_average'], 'desc');
-    } else if (sortBy === SORT_BY_RATE_UP) {
-        sortedFilms = _.orderBy(filmList, ['vote_average'], 'asc');
-    } else if (sortBy === SORT_BY_FAME_DOWN) {
-        sortedFilms = _.orderBy(filmList, ['popularity'], 'desc');
-    } else if (sortBy === SORT_BY_FAME_UP) {
-        sortedFilms = _.orderBy(filmList, ['popularity'], 'asc');
-    }
-
-    if (sortYear === SORT_BY_YEAR_2020) {
-        sortedFilms = sortedFilms.filter(item =>
-            (((Number(item.release_date.slice(0, 4))) === 2020))
-        )
-    } else if (sortYear === SORT_BY_YEAR_2019) {
-        sortedFilms = sortedFilms.filter(item =>
-            (((Number(item.release_date.slice(0, 4))) === 2019))
-        )
-    } else if (sortYear === SORT_BY_YEAR_2018) {
-        sortedFilms = sortedFilms.filter(item =>
-            (((Number(item.release_date.slice(0, 4))) === 2018))
-        )
-    } else if (sortYear === SORT_BY_YEAR_2017) {
-        sortedFilms = sortedFilms.filter(item =>
-            (((Number(item.release_date.slice(0, 4))) === 2017))
-        )}
-
+    const sortedFilms = sortByYear(sortYear, sortMovies(sortBy, filmList));
     const itemsOnPage = 10;
     const filmsAmount = sortedFilms.length;
     const totalPages = Math.ceil(filmsAmount / itemsOnPage);

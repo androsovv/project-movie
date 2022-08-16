@@ -7,19 +7,17 @@ import {
     SORT_BY_RATE_UP,
     SORT_BY_RATE_DOWN,
     setSort,
-    SORT_BY_YEAR_2020,
-    SORT_BY_YEAR_2019,
-    SORT_BY_YEAR_2018,
-    SORT_BY_YEAR_2017, setPage, setYear
+    setPage,
+    setYear
 } from "../store/actions";
-import {useDispatch, useSelector} from "react-redux";
-import {iState} from "../types/filmTypes";
+import {useDispatch} from "react-redux";
+
 
 interface FilterProps {
     totalPages: number;
 }
 
-const Filters:FC<FilterProps> = ({totalPages}) => {
+const Filters: FC<FilterProps> = ({totalPages}) => {
     const dispatch = useDispatch();
 
     const handleSort = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -41,9 +39,10 @@ const Filters:FC<FilterProps> = ({totalPages}) => {
         <div className="filters">
             <h2 style={{fontWeight: 500}}>Фильтры:</h2>
             <button className="btn btn-primary"
-                    style={{backgroundColor:"#203338", border:"none"}}
+                    style={{backgroundColor: "#203338", border: "none"}}
                     onClick={() => handleReset()}
-            >Cбросить все фильтры</button>
+            >Cбросить все фильтры
+            </button>
             <span>Cортировать по:</span>
             <select className="form-select form-select-mg mb-3" onChange={handleSort}>
                 <option value={SORT_BY_FAME_DOWN}>Популярные по убыванию</option>
@@ -60,10 +59,11 @@ const Filters:FC<FilterProps> = ({totalPages}) => {
             </select>
             <div className="checkboxFilter">
                 {geners.map(item =>
-                    <div className="filterName" key={item.id}><input type="checkbox" value={item.name}/>{" " + item.name}</div>
+                    <div className="filterName" key={item.id}><input type="checkbox"
+                                                                     value={item.name}/>{" " + item.name}</div>
                 )}
             </div>
-            <Pagination  totalPages={totalPages}/>
+            <Pagination totalPages={totalPages}/>
         </div>
     );
 };
