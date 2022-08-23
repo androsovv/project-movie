@@ -1,6 +1,7 @@
 export const SET_PAGE = 'SET_PAGE';
 export const SET_SORT = 'SET_SORT';
 export const SET_YEAR = 'SET_YEAR';
+export const SET_GENRE = 'SET_GENRE';
 export const SORT_BY_RATE_DOWN = 'SORT_BY_RATE_DOWN';
 export const SORT_BY_RATE_UP = 'SORT_BY_RATE_UP';
 export const SORT_BY_FAME_DOWN = 'SORT_BY_FAME_DOWN';
@@ -22,4 +23,7 @@ export function setYear(year: number) {
     return {type: SET_YEAR, year}
 }
 
+export function setGenre(id: number) {
+    return {type: SET_GENRE, id}
+}
 

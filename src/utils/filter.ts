@@ -4,7 +4,6 @@ import {
     SORT_BY_FAME_UP,
     SORT_BY_RATE_DOWN,
     SORT_BY_RATE_UP,
-    SORT_BY_YEAR_2020,
     SORT_BY_YEAR_2019,
     SORT_BY_YEAR_2018,
     SORT_BY_YEAR_2017,
@@ -30,8 +29,6 @@ export function sortMovies(sort: string, movies: IFilmData[]){
 
 export function sortByYear(sort: number, films: IFilmData[]) {
     switch (sort) {
-        case SORT_BY_YEAR_2020:
-            return films.filter(item =>(((Number(item.release_date.slice(0, 4))) === 2020)));
         case SORT_BY_YEAR_2019:
             return films.filter(item =>(((Number(item.release_date.slice(0, 4))) === 2019)));
         case SORT_BY_YEAR_2018:
@@ -41,4 +38,8 @@ export function sortByYear(sort: number, films: IFilmData[]) {
         default:
             return films.filter(item =>(((Number(item.release_date.slice(0, 4))) === 2020)));
     }
+}
+
+export function sortByGenre(films: IFilmData[], id: number) {
+    return (id === 0 ? films : films.filter(item => item.genre_ids.includes(id)));
 }

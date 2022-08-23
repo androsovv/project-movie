@@ -19,4 +19,5 @@ export interface iState {
     currentPage: number;
     sortBy: string;
     sortYear: number;
+    sortGenre: number;
 }

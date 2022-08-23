@@ -12,3 +12,8 @@ export interface actionYear {
     type: string;
     year: number;
 }
+
+export interface actionGenre {
+    type: string;
+    id: number;
+}

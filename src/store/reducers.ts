@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
-import {actionPage, actionSort, actionYear} from "../types/actionTypes";
+import {actionGenre, actionPage, actionSort, actionYear} from "../types/actionTypes";
 import {
+    SET_GENRE,
     SET_PAGE, SET_SORT, SET_YEAR,
     SORT_BY_RATE_DOWN, SORT_BY_YEAR_2020
 } from "./actions";
@@ -33,10 +34,20 @@ function sortYear(state = SORT_BY_YEAR_2020, action: actionYear) {
     }
 }
 
+function sortGenre(state = 0, action: actionGenre) {
+    switch (action.type) {
+        case SET_GENRE:
+            return action.id;
+        default:
+            return state;
+    }
+}
+
 const mainReducer = combineReducers({
     currentPage,
     sortBy,
-    sortYear
+    sortYear,
+    sortGenre
 });
 
 export default mainReducer;

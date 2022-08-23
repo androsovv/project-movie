@@ -8,7 +8,7 @@ import {
     SORT_BY_RATE_DOWN,
     setSort,
     setPage,
-    setYear
+    setYear, setGenre
 } from "../store/actions";
 import {useDispatch} from "react-redux";
 
@@ -25,13 +25,20 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
         dispatch(setPage(1));
     }
     const handleReset = () => {
+        dispatch(setGenre(0));
         dispatch(setSort(SORT_BY_FAME_DOWN));
         dispatch(setPage(1));
+        dispatch(setYear(2020));
     }
 
     const handleYear = (event: ChangeEvent<HTMLSelectElement>) => {
         const year = Number(event.target.value);
         dispatch(setYear(year))
+        dispatch(setPage(1));
+    }
+
+    const handleGenre = (id: number) => {
+        dispatch(setGenre(id));
         dispatch(setPage(1));
     }
 
@@ -59,8 +66,14 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
             </select>
             <div className="checkboxFilter">
                 {geners.map(item =>
-                    <div className="filterName" key={item.id}><input type="checkbox"
-                                                                     value={item.name}/>{" " + item.name}</div>
+                    <div className="filterName" key={item.id} >
+                        <input
+                            type="checkbox"
+                            value={item.name}
+                            onClick={() => handleGenre(item.id)}
+                        />
+                        {" " + item.name}
+                    </div>
                 )}
             </div>
             <Pagination totalPages={totalPages}/>

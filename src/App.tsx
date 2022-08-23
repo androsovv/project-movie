@@ -8,19 +8,22 @@ import {filmList} from "./data/filmList";
 import {paginate} from "./utils/paginate";
 import {IFilmData, iState} from "./types/filmTypes";
 import {useSelector} from "react-redux";
-import {sortByYear, sortMovies} from "./utils/filter";
+import {sortByYear, sortMovies, sortByGenre} from "./utils/filter";
 
 
 function App() {
     const state = useSelector((state: iState) => state);
-    const {currentPage, sortBy, sortYear} = state;
-    const sortedFilms = sortByYear(sortYear, sortMovies(sortBy, filmList));
+    const {currentPage, sortBy, sortYear, sortGenre} = state;
+    console.log(sortGenre);
+    let sortedFilms = sortByYear(sortYear, sortMovies(sortBy, filmList));
+    const sortedGenre = sortByGenre(sortedFilms, sortGenre);
+    console.log(sortedGenre);
     const itemsOnPage = 10;
-    const filmsAmount = sortedFilms.length;
+    const filmsAmount = sortedGenre.length;
     const totalPages = Math.ceil(filmsAmount / itemsOnPage);
 
 
-    const pagesCrop: IFilmData[] = paginate(sortedFilms, currentPage, itemsOnPage);
+    const pagesCrop: IFilmData[] = paginate(sortedGenre, currentPage, itemsOnPage);
 
     return (
         <div className="App">
