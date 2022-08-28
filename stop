@@ -1,0 +1,104 @@
+[33mcommit 746cdd803658adaf8c462e3cc7c46e28169fba30[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Mon Aug 22 01:08:08 2022 +0300
+
+    try some refacor
+
+[33mcommit a2d9d7e7be2ffcdcd43ed16d17cd3d26f017f577[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Tue Aug 16 23:05:51 2022 +0300
+
+     rrr
+
+[33mcommit bfc1e9453bf6f8af91f8d6cf8a5f42a09cef60b3[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Tue Aug 16 21:42:32 2022 +0300
+
+    refactoring
+
+[33mcommit 2fbc96f8ba14436cd9be1586c49d0e519756b604[m
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Fri Aug 12 18:24:08 2022 +0300
+
+    some refactor
+
+[33mcommit 67c866090608e6c9839ec7ca25c4cc6295939f47[m
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Fri Aug 12 18:02:22 2022 +0300
+
+    filter years
+
+[33mcommit 525e265aed307d044a8400c373f7964d1953444d[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Thu Aug 11 23:55:30 2022 +0300
+
+    add filters
+
+[33mcommit 7007075f5978b5900a563cbf3ec88ae8eafab3ef[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Mon Aug 8 11:14:06 2022 +0300
+
+    add redux
+
+[33mcommit 9720e1f44c401582e5e9968e7ea94dc8061164cc[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Thu Aug 4 23:51:47 2022 +0300
+
+    start adding redux
+
+[33mcommit 3bfe74ea52953b1fc5edff018874e74c47afefae[m
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Mon Aug 1 14:14:40 2022 +0300
+
+    pagination done
+
+[33mcommit 85e2ffba8a602f55c107642b9b631ad633e9f3bc[m
+Merge: 9b75efc bbf5917
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Mon Aug 1 12:43:41 2022 +0300
+
+    Merge branch 'main' of https://github.com/androsovv/project-movie
+    
+    # Conflicts:
+    #       src/App.tsx
+    #       src/components/filmCard.tsx
+    #       src/components/filmList.tsx
+    #       src/components/filters.tsx
+    #       src/components/pagination.tsx
+    #       src/utils/paginate.js
+
+[33mcommit bbf591708942da11f5eaf4cfbdd64e08663b0801[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Sun Jul 31 22:00:39 2022 +0300
+
+    pagination
+
+[33mcommit 9b75efc598a02f99942f0be079ec825a24e37e3c[m
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Fri Jul 29 12:18:28 2022 +0300
+
+    paginate
+
+[33mcommit 5246c3d7ed8d34f0b7b5654414e7a30eed1a81f2[m
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Thu Jul 28 19:05:25 2022 +0300
+
+    map filmCards
+
+[33mcommit 2ddc7aa50097c6745bf5677a151a5ce3d35442f1[m
+Author: homePC <vladimirandrosov13@gmail.com>
+Date:   Tue Jul 26 22:22:07 2022 +0300
+
+    first step
+
+[33mcommit 5cb9f3d4ffe7497ae557329cff89d6de10e0548d[m
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Mon Jul 18 12:10:20 2022 +0300
+
+    first commit
+
+[33mcommit e7b128ec650fa8c882f8a30afd5ca16a7a133d9d[m
+Author: Vladimir workPC <advogad1@gmail.com>
+Date:   Mon Jul 18 10:51:15 2022 +0300
+
+    Initialize project using Create React App

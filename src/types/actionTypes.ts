@@ -17,3 +17,8 @@ export interface actionGenre {
     type: string;
     id: number;
 }
+
+export interface actionModal {
+    type: string;
+    isActive: boolean;
+}

@@ -20,4 +20,5 @@ export interface iState {
     sortBy: string;
     sortYear: number;
     sortGenre: number;
+    modalActive: boolean;
 }

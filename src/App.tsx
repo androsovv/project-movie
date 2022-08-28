@@ -9,6 +9,7 @@ import {paginate} from "./utils/paginate";
 import {IFilmData, iState} from "./types/filmTypes";
 import {useSelector} from "react-redux";
 import {sortByYear, sortMovies, sortByGenre} from "./utils/filter";
+import Modal from "./components/modal";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
     return (
         <div className="App">
+            <Modal/>
             <Header/>
             <div className="app__content">
                 <Filters totalPages={totalPages}/>

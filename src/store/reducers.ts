@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import {actionGenre, actionPage, actionSort, actionYear} from "../types/actionTypes";
+import {actionGenre, actionModal, actionPage, actionSort, actionYear} from "../types/actionTypes";
 import {
-    SET_GENRE,
+    SET_GENRE, SET_MODAL,
     SET_PAGE, SET_SORT, SET_YEAR,
     SORT_BY_RATE_DOWN, SORT_BY_YEAR_2020
 } from "./actions";
@@ -43,11 +43,21 @@ function sortGenre(state = 0, action: actionGenre) {
     }
 }
 
+function modalActive(state = false, action: actionModal) {
+    switch (action.type) {
+        case SET_MODAL:
+            return action.isActive;
+        default:
+            return state;
+    }
+}
+
 const mainReducer = combineReducers({
     currentPage,
     sortBy,
     sortYear,
-    sortGenre
+    sortGenre,
+    modalActive
 });
 
 export default mainReducer;
