@@ -22,3 +22,8 @@ export interface actionModal {
     type: string;
     isActive: boolean;
 }
+
+export interface actionLogin {
+    type: string;
+    isLogin: boolean;
+}

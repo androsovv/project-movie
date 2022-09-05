@@ -1,11 +1,20 @@
 import React from 'react';
-import {IFilmData} from "../types/filmTypes";
+import {IFilmData, iState} from "../types/filmTypes";
+import {useDispatch, useSelector} from "react-redux";
+import {setModal} from "../store/actions";
 
 interface IFilmCard {
     pagesCrop: IFilmData[];
 }
 
 const FilmCard = ({pagesCrop}: IFilmCard) => {
+    const dispatch = useDispatch();
+    const isLogin = useSelector((state: iState) => state.isLogIn);
+    const showModal = () => {
+        if(!isLogin) {
+            dispatch(setModal(true));
+        }
+    }
     return (
         <>
             {pagesCrop.map((item) => {
@@ -16,8 +25,10 @@ const FilmCard = ({pagesCrop}: IFilmCard) => {
                         <div className="description">
                             <div className="top">
                                 <div className="rate">{"Рейтинг: " + item.vote_average}</div>
-                                <i className="bi bi-star"></i>
-                                <i className="bi bi-bookmark"></i>
+                                <i
+                                    onClick={showModal}
+                                    className="bi bi-star"></i>
+                                <i className="bi bi-bookmark" onClick={showModal}></i>
                             </div>
                             <div className="middle" style={{fontWeight: 500}}>{item.title}</div>
                             <button className="more__btn">Подробнее</button>

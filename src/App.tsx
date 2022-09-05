@@ -15,10 +15,8 @@ import Modal from "./components/modal";
 function App() {
     const state = useSelector((state: iState) => state);
     const {currentPage, sortBy, sortYear, sortGenre} = state;
-    console.log(sortGenre);
     let sortedFilms = sortByYear(sortYear, sortMovies(sortBy, filmList));
     const sortedGenre = sortByGenre(sortedFilms, sortGenre);
-    console.log(sortedGenre);
     const itemsOnPage = 10;
     const filmsAmount = sortedGenre.length;
     const totalPages = Math.ceil(filmsAmount / itemsOnPage);

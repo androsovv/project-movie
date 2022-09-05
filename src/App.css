@@ -10,7 +10,9 @@ nav {
     padding: 10px 20px;
     background-color: #017BFF;
 }
-
+i {
+    cursor: pointer;
+}
 .login {
     margin-right: 190px;
 }

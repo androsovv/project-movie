@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import {actionGenre, actionModal, actionPage, actionSort, actionYear} from "../types/actionTypes";
+import {actionGenre, actionModal, actionPage, actionSort, actionYear, actionLogin} from "../types/actionTypes";
 import {
-    SET_GENRE, SET_MODAL,
+    SET_GENRE, SET_LOGIN, SET_MODAL,
     SET_PAGE, SET_SORT, SET_YEAR,
     SORT_BY_RATE_DOWN, SORT_BY_YEAR_2020
 } from "./actions";
@@ -52,12 +52,22 @@ function modalActive(state = false, action: actionModal) {
     }
 }
 
+function isLogIn(state = false, action: actionLogin) {
+    switch (action.type) {
+        case SET_LOGIN:
+            return action.isLogin;
+        default:
+            return state;
+    }
+}
+
 const mainReducer = combineReducers({
     currentPage,
     sortBy,
     sortYear,
     sortGenre,
-    modalActive
+    modalActive,
+    isLogIn
 });
 
 export default mainReducer;

@@ -21,4 +21,5 @@ export interface iState {
     sortYear: number;
     sortGenre: number;
     modalActive: boolean;
+    isLogIn: boolean;
 }

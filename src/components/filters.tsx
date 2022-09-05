@@ -8,9 +8,10 @@ import {
     SORT_BY_RATE_DOWN,
     setSort,
     setPage,
-    setYear, setGenre
+    setYear, setGenre, SORT_WATCH_LATER, SORT_FAVORITE
 } from "../store/actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {iState} from "../types/filmTypes";
 
 
 interface FilterProps {
@@ -19,6 +20,7 @@ interface FilterProps {
 
 const Filters: FC<FilterProps> = ({totalPages}) => {
     const dispatch = useDispatch();
+    const isLogin = useSelector((state: iState) => state.isLogIn);
 
     const handleSort = (event: ChangeEvent<HTMLSelectElement>) => {
         dispatch(setSort(event.target.value));
@@ -56,6 +58,12 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
                 <option value={SORT_BY_FAME_UP}>Популярные по возрастанию</option>
                 <option value={SORT_BY_RATE_DOWN}>Рейтинг по убыванию</option>
                 <option value={SORT_BY_RATE_UP}>Рейтинг по возрастанию</option>
+                {isLogin &&
+                    <>
+                        <option value={SORT_WATCH_LATER}>Смотреть позже</option>
+                        <option value={SORT_FAVORITE}>Избранные</option>
+                    </>
+                }
             </select>
             <span>Год релиза:</span>
             <select className="form-select form-select-mg mb-3" onChange={handleYear}>
@@ -66,7 +74,7 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
             </select>
             <div className="checkboxFilter">
                 {geners.map(item =>
-                    <div className="filterName" key={item.id} >
+                    <div className="filterName" key={item.id}>
                         <input
                             type="checkbox"
                             value={item.name}
