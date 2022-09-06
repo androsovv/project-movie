@@ -13,8 +13,12 @@ import {
     REMOVE_FAVORITE,
     SET_GENRE, SET_LOGIN, SET_MODAL,
     SET_PAGE, SET_SORT, SET_YEAR,
-    SORT_BY_RATE_DOWN, SORT_BY_YEAR_2020
+    SORT_BY_RATE_DOWN, SORT_BY_YEAR_2020,
+    SET_SORT_2
 } from "./actions";
+
+import {filmList} from "../data/filmList";
+import {sortMovies} from "../utils/filter";
 
 
 function currentPage(state = 1, action: actionPage) {
@@ -82,6 +86,15 @@ function favoriteFilms(state= [], action: actionFavorite) {
     }
 }
 
+function movies(state = filmList, action: any) {
+    switch (action.type) {
+        case SET_SORT_2:
+            return sortMovies(action.type, state);
+        default:
+            return state;
+    }
+}
+
 const mainReducer = combineReducers({
     currentPage,
     sortBy,
@@ -90,6 +103,7 @@ const mainReducer = combineReducers({
     modalActive,
     isLogIn,
     favoriteFilms,
+    movies
 });
 
 export default mainReducer;

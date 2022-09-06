@@ -13,24 +13,24 @@ import Modal from "./components/modal";
 
 
 function App() {
-    const state = useSelector((state: iState) => state);
-    const {currentPage, sortBy, sortYear, sortGenre} = state;
-    let sortedFilms = sortByYear(sortYear, sortMovies(sortBy, filmList));
-    const sortedGenre = sortByGenre(sortedFilms, sortGenre);
-    const itemsOnPage = 10;
-    const filmsAmount = sortedGenre.length;
-    const totalPages = Math.ceil(filmsAmount / itemsOnPage);
+    // const state = useSelector((state: iState) => state);
+    // const {currentPage, sortBy, sortYear, sortGenre} = state;
+    // let sortedFilms = sortByYear(sortYear, sortMovies(sortBy, filmList));
+    // const sortedGenre = sortByGenre(sortedFilms, sortGenre);
+    // const itemsOnPage = 10;
+    // const filmsAmount = sortedGenre.length;
+    // const totalPages = Math.ceil(filmsAmount / itemsOnPage);
 
 
-    const pagesCrop: IFilmData[] = paginate(sortedGenre, currentPage, itemsOnPage);
+    // const pagesCrop: IFilmData[] = paginate(sortedGenre, currentPage, itemsOnPage);
 
     return (
         <div className="App">
             <Modal/>
             <Header/>
             <div className="app__content">
-                <Filters totalPages={totalPages}/>
-                <FilmList pagesCrop={pagesCrop}/>
+                <Filters />
+                <FilmList />
             </div>
         </div>
     );

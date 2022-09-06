@@ -11,7 +11,8 @@ const FilmCard = ({pagesCrop}: IFilmCard) => {
     const dispatch = useDispatch();
     const isLogin = useSelector((state: iState) => state.isLogIn);
     const favorites = useSelector((state: iState) => state.favoriteFilms);
-    console.log(favorites);
+    const films = useSelector((state: iState) => state.films);
+    console.log(films);
 
     const showModal = (id: number) => {
         if(!isLogin) {
@@ -25,7 +26,7 @@ const FilmCard = ({pagesCrop}: IFilmCard) => {
 
     return (
         <>
-            {pagesCrop.map((item) => {
+            {films.map((item) => {
                 const imagePath = item.poster_path || item.backdrop_path;
                 return (
                     <div key={item.id} className="film__card">

@@ -23,4 +23,5 @@ export interface iState {
     modalActive: boolean;
     isLogIn: boolean;
     favoriteFilms: Array<number>;
+    films: IFilmData;
 }
