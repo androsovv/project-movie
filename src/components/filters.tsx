@@ -58,13 +58,16 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
                 <option value={SORT_BY_FAME_UP}>Популярные по возрастанию</option>
                 <option value={SORT_BY_RATE_DOWN}>Рейтинг по убыванию</option>
                 <option value={SORT_BY_RATE_UP}>Рейтинг по возрастанию</option>
-                {isLogin &&
-                    <>
+            </select>
+            {isLogin &&
+                <>
+                    <span>Ваш выбор:</span>
+                    <select className="form-select form-select-mg mb-3" >
                         <option value={SORT_WATCH_LATER}>Смотреть позже</option>
                         <option value={SORT_FAVORITE}>Избранные</option>
-                    </>
-                }
-            </select>
+                    </select>
+                </>
+            }
             <span>Год релиза:</span>
             <select className="form-select form-select-mg mb-3" onChange={handleYear}>
                 <option value={2020}>2020</option>

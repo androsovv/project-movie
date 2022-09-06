@@ -13,7 +13,6 @@ const Modal = () => {
 
 
     const modalActive = useSelector((state: iState) => state.modalActive);
-    const isLogin = useSelector((state: iState) => state.isLogIn);
 
     const authorization = (event: any): void => {
         event.preventDefault();
@@ -22,12 +21,11 @@ const Modal = () => {
             setUsername('');
             setPassword('');
             modalDeactivate();
-            console.log(isLogin);
+            localStorage.setItem('admin', "true");
         } else {
             alert("Введены не верные логин или пароль")
             setUsername('');
             setPassword('');
-            console.log(isLogin);
         }
     }
 

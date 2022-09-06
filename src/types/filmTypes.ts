@@ -22,4 +22,5 @@ export interface iState {
     sortGenre: number;
     modalActive: boolean;
     isLogIn: boolean;
+    favoriteFilms: Array<number>;
 }

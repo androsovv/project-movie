@@ -4,6 +4,9 @@ export const SET_YEAR = 'SET_YEAR';
 export const SET_GENRE = 'SET_GENRE';
 export const SET_MODAL = 'SET_MODAL';
 export const SET_LOGIN = 'SET_LOGIN';
+export const SET_FAVORITE = 'SET_FAVORITE';
+export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+export const SET_WATCH_LATER = 'SET_WATCH_LATER';
 export const SORT_BY_RATE_DOWN = 'SORT_BY_RATE_DOWN';
 export const SORT_BY_RATE_UP = 'SORT_BY_RATE_UP';
 export const SORT_BY_FAME_DOWN = 'SORT_BY_FAME_DOWN';
@@ -38,4 +41,13 @@ export function setModal(isActive: boolean) {
 export function setLogin(isLogin: boolean) {
     return {type: SET_LOGIN, isLogin}
 }
+
+export function addFavorite(favoriteId: number) {
+    return {type: SET_FAVORITE, favoriteId}
+}
+
+export function removeFavorite(favoriteId: number) {
+    return {type: REMOVE_FAVORITE, favoriteId}
+}
+
 

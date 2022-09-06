@@ -1,4 +1,4 @@
-import {IFilmData} from "../types/filmTypes";
+import {IFilmData, iState} from "../types/filmTypes";
 import {
     SORT_BY_FAME_DOWN,
     SORT_BY_FAME_UP,
@@ -6,10 +6,9 @@ import {
     SORT_BY_RATE_UP,
     SORT_BY_YEAR_2019,
     SORT_BY_YEAR_2018,
-    SORT_BY_YEAR_2017,
+    SORT_BY_YEAR_2017, SORT_FAVORITE,
 } from "../store/actions";
 import * as _ from 'lodash';
-
 
 
 export function sortMovies(sort: string, movies: IFilmData[]){

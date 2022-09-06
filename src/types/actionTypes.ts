@@ -27,3 +27,8 @@ export interface actionLogin {
     type: string;
     isLogin: boolean;
 }
+
+export interface actionFavorite {
+    type: string;
+    favoriteId: number;
+}

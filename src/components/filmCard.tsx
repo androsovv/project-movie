@@ -1,7 +1,7 @@
 import React from 'react';
 import {IFilmData, iState} from "../types/filmTypes";
 import {useDispatch, useSelector} from "react-redux";
-import {setModal} from "../store/actions";
+import {addFavorite, removeFavorite, setModal} from "../store/actions";
 
 interface IFilmCard {
     pagesCrop: IFilmData[];
@@ -10,11 +10,19 @@ interface IFilmCard {
 const FilmCard = ({pagesCrop}: IFilmCard) => {
     const dispatch = useDispatch();
     const isLogin = useSelector((state: iState) => state.isLogIn);
-    const showModal = () => {
+    const favorites = useSelector((state: iState) => state.favoriteFilms);
+    console.log(favorites);
+
+    const showModal = (id: number) => {
         if(!isLogin) {
             dispatch(setModal(true));
+        } else {
+            dispatch(favorites.includes(id) ? removeFavorite(id) : addFavorite(id));
         }
     }
+
+
+
     return (
         <>
             {pagesCrop.map((item) => {
@@ -26,9 +34,9 @@ const FilmCard = ({pagesCrop}: IFilmCard) => {
                             <div className="top">
                                 <div className="rate">{"Рейтинг: " + item.vote_average}</div>
                                 <i
-                                    onClick={showModal}
+                                    onClick={() => showModal(item.id)}
                                     className="bi bi-star"></i>
-                                <i className="bi bi-bookmark" onClick={showModal}></i>
+                                <i className="bi bi-bookmark" onClick={() => showModal(item.id)}></i>
                             </div>
                             <div className="middle" style={{fontWeight: 500}}>{item.title}</div>
                             <button className="more__btn">Подробнее</button>

@@ -12,6 +12,7 @@ const Header = () => {
 
     const logout = () => {
         dispatch(setLogin(false));
+        localStorage.removeItem('admin');
     }
 
     return (
