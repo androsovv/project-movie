@@ -6,29 +6,27 @@ import {
     SORT_BY_FAME_UP,
     SORT_BY_RATE_UP,
     SORT_BY_RATE_DOWN,
-    setSort,
     setPage,
-    setYear, setGenre, SORT_WATCH_LATER, SORT_FAVORITE
+    setYear, setGenre, SORT_WATCH_LATER, SORT_FAVORITE, setSort2
 } from "../store/actions";
 import {useDispatch, useSelector} from "react-redux";
 import {iState} from "../types/filmTypes";
 
 
-interface FilterProps {
-    totalPages: number;
-}
 
-const Filters: FC<FilterProps> = ({totalPages}) => {
+const Filters = () => {
     const dispatch = useDispatch();
-    const isLogin = useSelector((state: iState) => state.isLogIn);
+    const state = useSelector((state: iState) => state);
+    const {isLogIn} = state;
 
     const handleSort = (event: ChangeEvent<HTMLSelectElement>) => {
-        dispatch(setSort(event.target.value));
+        dispatch(setSort2(event.target.value));
         dispatch(setPage(1));
     }
+
     const handleReset = () => {
         dispatch(setGenre(0));
-        dispatch(setSort(SORT_BY_FAME_DOWN));
+        dispatch(setSort2(SORT_BY_FAME_DOWN));
         dispatch(setPage(1));
         dispatch(setYear(2020));
     }
@@ -36,12 +34,17 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
     const handleYear = (event: ChangeEvent<HTMLSelectElement>) => {
         const year = Number(event.target.value);
         dispatch(setYear(year))
+        dispatch(setSort2(SORT_BY_FAME_DOWN));
         dispatch(setPage(1));
     }
 
     const handleGenre = (id: number) => {
         dispatch(setGenre(id));
         dispatch(setPage(1));
+    }
+
+    const showFavorite = () => {
+
     }
 
     return (
@@ -59,7 +62,7 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
                 <option value={SORT_BY_RATE_DOWN}>Рейтинг по убыванию</option>
                 <option value={SORT_BY_RATE_UP}>Рейтинг по возрастанию</option>
             </select>
-            {isLogin &&
+            {isLogIn &&
                 <>
                     <span>Ваш выбор:</span>
                     <select className="form-select form-select-mg mb-3" >
@@ -81,13 +84,13 @@ const Filters: FC<FilterProps> = ({totalPages}) => {
                         <input
                             type="checkbox"
                             value={item.name}
-                            onClick={() => handleGenre(item.id)}
+                            onClick={(event) => handleGenre(item.id)}
                         />
                         {" " + item.name}
                     </div>
                 )}
             </div>
-            <Pagination totalPages={totalPages}/>
+            <Pagination />
         </div>
     );
 };

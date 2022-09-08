@@ -17,11 +17,10 @@ export interface IFilmData {
 
 export interface iState {
     currentPage: number;
-    sortBy: string;
     sortYear: number;
     sortGenre: number;
     modalActive: boolean;
     isLogIn: boolean;
     favoriteFilms: Array<number>;
-    films: IFilmData;
+    movies: Array<IFilmData>;
 }

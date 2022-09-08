@@ -2,23 +2,21 @@ import React from 'react';
 import {IFilmData, iState} from "../types/filmTypes";
 import {useDispatch, useSelector} from "react-redux";
 import {addFavorite, removeFavorite, setModal} from "../store/actions";
+import {paginate} from "../utils/paginate";
 
-interface IFilmCard {
-    pagesCrop: IFilmData[];
-}
 
-const FilmCard = ({pagesCrop}: IFilmCard) => {
+const FilmCard = () => {
     const dispatch = useDispatch();
-    const isLogin = useSelector((state: iState) => state.isLogIn);
-    const favorites = useSelector((state: iState) => state.favoriteFilms);
-    const films = useSelector((state: iState) => state.films);
-    console.log(films);
+    const state = useSelector((state: iState) => state);
+    const {movies, isLogIn, favoriteFilms, currentPage} = state;
+    const cropMovies: Array<IFilmData> = paginate(movies, currentPage, 10);
 
     const showModal = (id: number) => {
-        if(!isLogin) {
+        if(!isLogIn) {
             dispatch(setModal(true));
         } else {
-            dispatch(favorites.includes(id) ? removeFavorite(id) : addFavorite(id));
+            dispatch(favoriteFilms.includes(id) ? removeFavorite(id) : addFavorite(id));
+            console.log(favoriteFilms);
         }
     }
 
@@ -26,7 +24,7 @@ const FilmCard = ({pagesCrop}: IFilmCard) => {
 
     return (
         <>
-            {films.map((item) => {
+            {cropMovies.map((item) => {
                 const imagePath = item.poster_path || item.backdrop_path;
                 return (
                     <div key={item.id} className="film__card">
@@ -45,6 +43,9 @@ const FilmCard = ({pagesCrop}: IFilmCard) => {
                     </div>
                 )
             })}
+            {cropMovies.length === 0 &&
+                <h2 style={{color: "red"}}>Нет подходящих фильмов</h2>
+            }
         </>
     );
 

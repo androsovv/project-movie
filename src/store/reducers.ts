@@ -1,10 +1,7 @@
 import {combineReducers} from 'redux';
 import {
-    actionGenre,
     actionModal,
     actionPage,
-    actionSort,
-    actionYear,
     actionLogin,
     actionFavorite
 } from "../types/actionTypes";
@@ -12,46 +9,19 @@ import {
     SET_FAVORITE,
     REMOVE_FAVORITE,
     SET_GENRE, SET_LOGIN, SET_MODAL,
-    SET_PAGE, SET_SORT, SET_YEAR,
-    SORT_BY_RATE_DOWN, SORT_BY_YEAR_2020,
+    SET_PAGE, SET_YEAR,
     SET_SORT_2
 } from "./actions";
 
 import {filmList} from "../data/filmList";
 import {sortMovies} from "../utils/filter";
-
+import {useSelector} from "react-redux";
+import {iState} from "../types/filmTypes";
 
 function currentPage(state = 1, action: actionPage) {
     switch (action.type) {
         case SET_PAGE:
             return action.page;
-        default:
-            return state;
-    }
-}
-
-function sortBy(state = SORT_BY_RATE_DOWN, action: actionSort) {
-    switch (action.type) {
-        case SET_SORT:
-            return action.sort;
-        default:
-            return state;
-    }
-}
-
-function sortYear(state = SORT_BY_YEAR_2020, action: actionYear) {
-    switch (action.type) {
-        case SET_YEAR:
-            return action.year;
-        default:
-            return state;
-    }
-}
-
-function sortGenre(state = 0, action: actionGenre) {
-    switch (action.type) {
-        case SET_GENRE:
-            return action.id;
         default:
             return state;
     }
@@ -86,10 +56,17 @@ function favoriteFilms(state= [], action: actionFavorite) {
     }
 }
 
-function movies(state = filmList, action: any) {
+
+function movies(state = filmList.filter(item => (((Number(item.release_date.slice(0, 4))) === 2020))), action: any) {
     switch (action.type) {
         case SET_SORT_2:
-            return sortMovies(action.type, state);
+            return sortMovies(action.sort, state);
+        case SET_YEAR:
+             return filmList.filter(item => (((Number(item.release_date.slice(0, 4))) === action.year)));
+        case SET_GENRE:
+            return (action.id === 0 ? state : state.filter(item => item.genre_ids.includes(action.id)));
+        case SET_FAVORITE:
+            return (filmList.filter(item=> favoriteFilms.includes))
         default:
             return state;
     }
@@ -97,9 +74,6 @@ function movies(state = filmList, action: any) {
 
 const mainReducer = combineReducers({
     currentPage,
-    sortBy,
-    sortYear,
-    sortGenre,
     modalActive,
     isLogIn,
     favoriteFilms,
