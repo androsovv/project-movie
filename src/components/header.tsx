@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {setLogin, setModal} from "../store/actions";
 import {iState} from "../types/filmTypes";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -18,7 +19,9 @@ const Header = () => {
     return (
         <nav>
             <div className="navigation">
-                <button className="btn btn-light">Home</button>
+                <Link to="/">
+                    <button className="btn btn-light">Home</button>
+                </Link>
             </div>
             {!isLogin &&
                 <div className="login" onClick={modalActive}>

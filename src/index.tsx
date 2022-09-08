@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import {Provider} from "react-redux";
 import {store} from "./store/store";
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import FilmCardDescription from "./components/filmCard-description";
 
 
 const root = ReactDOM.createRoot(
@@ -12,7 +14,12 @@ const root = ReactDOM.createRoot(
 root.render(
     <Provider store={store}>
         <React.StrictMode>
-            <App/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<App/>}/>
+                    <Route path="film" element={<FilmCardDescription/>}/>
+                </Routes>
+            </BrowserRouter>
         </React.StrictMode>
     </Provider>
 );

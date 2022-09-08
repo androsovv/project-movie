@@ -3,6 +3,7 @@ import {IFilmData, iState} from "../types/filmTypes";
 import {useDispatch, useSelector} from "react-redux";
 import {addFavorite, removeFavorite, setModal} from "../store/actions";
 import {paginate} from "../utils/paginate";
+import {Link} from "react-router-dom";
 
 
 const FilmCard = () => {
@@ -38,7 +39,9 @@ const FilmCard = () => {
                                 <i className="bi bi-bookmark" onClick={() => showModal(item.id)}></i>
                             </div>
                             <div className="middle" style={{fontWeight: 500}}>{item.title}</div>
-                            <button className="more__btn">Подробнее</button>
+                            <Link to={`/film/${item.id}`}>
+                                <button className="more__btn">Подробнее</button>
+                            </Link>
                         </div>
                     </div>
                 )

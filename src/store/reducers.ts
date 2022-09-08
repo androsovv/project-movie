@@ -65,8 +65,6 @@ function movies(state = filmList.filter(item => (((Number(item.release_date.slic
              return filmList.filter(item => (((Number(item.release_date.slice(0, 4))) === action.year)));
         case SET_GENRE:
             return (action.id === 0 ? state : state.filter(item => item.genre_ids.includes(action.id)));
-        case SET_FAVORITE:
-            return (filmList.filter(item=> favoriteFilms.includes))
         default:
             return state;
     }
