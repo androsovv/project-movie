@@ -21,8 +21,6 @@ const FilmCard = () => {
         }
     }
 
-
-
     return (
         <>
             {cropMovies.map((item) => {

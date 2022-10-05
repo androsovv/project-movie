@@ -1,0 +1,29 @@
+.FilmCardDescription {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.mainInfo {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.leftSide {
+    height: 90%;
+    width: 20%;
+}
+
+.rightSide {
+    position: relative;
+    right: 200px;
+    color: white;
+    width: 30%;
+}
+
+.title {
+    font-size: 40px;
+}
