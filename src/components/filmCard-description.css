@@ -3,6 +3,8 @@
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
+.filmInfo {
+}
 .mainInfo {
     position: absolute;
     height: 50%;
@@ -10,15 +12,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    overflow: auto;
 }
 
 .leftSide {
+    position: relative;
     height: 90%;
     width: 20%;
 }
 
 .rightSide {
-    position: relative;
+    background: rgba(0, 0, 0, 55%);
+    position: static;
     right: 200px;
     color: white;
     width: 30%;
@@ -26,4 +31,31 @@
 
 .title {
     font-size: 40px;
+}
+
+.filmDetails {
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 100px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li:after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: green;
+    filter: blur(2px);
+}
+
+.filmDetails__left {
+    font-weight: bold;
 }
